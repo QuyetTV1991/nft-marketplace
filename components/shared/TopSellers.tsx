@@ -1,25 +1,49 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CreatorCard from "./cards/CreatorCard";
 import { creatorList } from "@/contants/dummy";
 import Image from "next/image";
 
 const TopSellers = () => {
-  const parentRef = useRef(null);
+  const [hideButtons, setHideButtons] = useState(false);
+  const parentRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = (direction: "left" | "right") => {
     const { current } = scrollRef;
+    const scrollAmount = window.innerWidth > 1800 ? 270 : 210;
 
     if (current) {
       if (direction === "left") {
-        current.scrollLeft -= 100;
+        current.scrollLeft -= scrollAmount;
       } else if (direction === "right") {
-        current.scrollLeft += 100;
+        current.scrollLeft += scrollAmount;
       }
     }
   };
+
+  const isScrollable = () => {
+    const { current } = scrollRef;
+    const { current: parent } = parentRef;
+
+    if (current && parent) {
+      if (current.scrollWidth >= parent.offsetWidth) {
+        setHideButtons(false);
+      } else {
+        setHideButtons(true);
+      }
+    }
+  };
+
+  useEffect(() => {
+    isScrollable();
+    window.addEventListener("resize", isScrollable);
+
+    return () => {
+      window.removeEventListener("resize", isScrollable);
+    };
+  });
 
   return (
     <div>
@@ -41,30 +65,32 @@ const TopSellers = () => {
               eths={item.creatorEths}
             />
           ))}
-          <>
-            <div
-              className="absolute left-0 top-45 size-8 cursor-pointer minlg:size-12"
-              onClick={() => handleScroll("left")}
-            >
-              <Image
-                src="/assets/left.png"
-                alt="left"
-                fill
-                className="object-contain invert dark:invert-0"
-              />
-            </div>
-            <div
-              className="absolute right-0 top-45 size-8 cursor-pointer minlg:size-12"
-              onClick={() => handleScroll("right")}
-            >
-              <Image
-                src="/assets/right.png"
-                alt="right"
-                fill
-                className="object-contain invert dark:invert-0"
-              />
-            </div>
-          </>
+          {!hideButtons && (
+            <>
+              <div
+                className="absolute left-0 top-45 size-8 cursor-pointer minlg:size-12"
+                onClick={() => handleScroll("left")}
+              >
+                <Image
+                  src="/assets/left.png"
+                  alt="left"
+                  fill
+                  className="object-contain invert dark:invert-0"
+                />
+              </div>
+              <div
+                className="absolute right-0 top-45 size-8 cursor-pointer minlg:size-12"
+                onClick={() => handleScroll("right")}
+              >
+                <Image
+                  src="/assets/right.png"
+                  alt="right"
+                  fill
+                  className="object-contain invert dark:invert-0"
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
