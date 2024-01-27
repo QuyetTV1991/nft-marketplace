@@ -1,4 +1,5 @@
 import Banner from "@/components/shared/Banner";
+import TopSellers from "@/components/shared/TopSellers";
 import React from "react";
 
 const Home = () => {
@@ -10,6 +11,8 @@ const Home = () => {
           childStyles="md:text-4xl sm:text-2xl xs:text-xl text-left"
           bannerDesc="Discover, collect and sell extraordinay NFTs"
         />
+
+        <TopSellers />
       </div>
     </div>
   );
