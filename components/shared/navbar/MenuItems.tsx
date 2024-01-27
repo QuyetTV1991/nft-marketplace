@@ -5,10 +5,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-const MenuItems = () => {
+interface MenuItemsProps {
+  isMobile?: boolean;
+}
+
+const MenuItems = ({ isMobile }: MenuItemsProps) => {
   const pathname = usePathname();
   return (
-    <ul className="flexCenter ml-3 list-none flex-row">
+    <ul
+      className={`flexCenter ml-3 list-none flex-row ${isMobile && "h-full flex-col"}`}
+    >
       {NavLinks.map((item, index) => {
         const isActive =
           (pathname.includes(item.route) && item.route.length > 1) ||

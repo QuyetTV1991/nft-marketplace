@@ -8,6 +8,7 @@ import ButtonGroup from "./ButtonGroup";
 import MobileNav from "./MobileNav";
 
 const Navbar = () => {
+  const isConnected = false;
   return (
     <nav className="flexBetween fixed z-10 w-full flex-row border-b border-nft-gray-1 bg-white p-4 dark:border-nft-black-1 dark:bg-nft-dark">
       {/* Logo Component */}
@@ -20,13 +21,13 @@ const Navbar = () => {
         <div className="flex md:hidden">
           <MenuItems />
           <div className="ml-4">
-            <ButtonGroup hasConnected={true} />
+            <ButtonGroup hasConnected={isConnected} />
           </div>
         </div>
       </div>
 
       <div className="ml-2 hidden md:flex">
-        <MobileNav />
+        <MobileNav hasConnected={isConnected} />
       </div>
     </nav>
   );
