@@ -1,40 +1,33 @@
-import Image from "next/image";
-import Link from "next/link";
+// import Image from "next/image";
+// import Link from "next/link";
 import React from "react";
 import Theme from "./Theme";
+import Logo from "./Logo";
+import MenuItems from "./MenuItems";
+import ButtonGroup from "./ButtonGroup";
+import MobileNav from "./MobileNav";
 
 const Navbar = () => {
   return (
     <nav className="flexBetween fixed z-10 w-full flex-row border-b border-nft-gray-1 bg-white p-4 dark:border-nft-black-1 dark:bg-nft-dark">
       {/* Logo Component */}
-      <div className="flex flex-1 flex-row justify-start">
-        <Link href="/" className="flexCenter cursor-pointer md:hidden">
-          <Image
-            src="/assets/logo02.png"
-            alt="logo"
-            width={32}
-            height={32}
-            className="object-contain"
-          />
-          <p className="ml-1 text-lg font-semibold text-nft-black-1 dark:text-white">
-            CrytoKet
-          </p>
-        </Link>
-        <Link href="/">
-          <div className="hidden md:flex">
-            <Image
-              src="/assets/logo02.png"
-              alt="logo"
-              width={32}
-              height={32}
-              className="object-contain"
-            />
+      <Logo />
+      <div className="flex flex-initial flex-row justify-end">
+        {/* Theme Switch Tool */}
+        <Theme />
+
+        {/* Menu item path */}
+        <div className="flex md:hidden">
+          <MenuItems />
+          <div className="ml-4">
+            <ButtonGroup hasConnected={true} />
           </div>
-        </Link>
+        </div>
       </div>
 
-      {/* Theme Switch Tool */}
-      <Theme />
+      <div className="ml-2 hidden md:flex">
+        <MobileNav />
+      </div>
     </nav>
   );
 };
