@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="flex w-full flex-row px-16 md:flex-col sm:px-4 minmd:w-4/5">
         <div className="flexStart flex-1 flex-col">
           <div className="flexCenter cursor-pointer">
-            <Logo />
+            <Logo noHidden />
           </div>
           <p className="mt-6 font-poppins text-base font-semibold text-nft-black-1 dark:text-white">
             Get the latest Updates
