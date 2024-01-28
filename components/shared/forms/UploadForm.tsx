@@ -5,8 +5,14 @@ import Image from "next/image";
 import React, { useCallback, useMemo, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Input from "../Input";
+import CustomBtn from "../CustomBtn";
 
 const UploadForm = () => {
+  const [formInput, setFormInput] = useState({
+    price: "",
+    name: "",
+    description: "",
+  });
   const [fileUrl, setFileUrl] = useState(null);
   const onDrop = useCallback(() => {
     // upload image to blockchain (ipfs)
@@ -84,8 +90,34 @@ const UploadForm = () => {
         inputType="input"
         title="Name"
         placeholder="NFT Card"
-        handleClick={() => {}}
+        handleClick={(e) =>
+          setFormInput({ ...formInput, name: e.target.value })
+        }
       />
+      <Input
+        inputType="textarea"
+        title="Description"
+        placeholder="NFT Description"
+        handleClick={(e) =>
+          setFormInput({ ...formInput, description: e.target.value })
+        }
+      />
+      <Input
+        inputType="number"
+        title="Price"
+        placeholder="NFT Price"
+        handleClick={(e) =>
+          setFormInput({ ...formInput, price: e.target.value })
+        }
+      />
+
+      <div className="mt-7 flex w-full justify-end">
+        <CustomBtn
+          classStyles={"rounded-xl"}
+          btnName={"Create NFT"}
+          action="submit"
+        />
+      </div>
     </>
   );
 };

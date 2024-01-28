@@ -7,9 +7,10 @@ interface CustomBtnProps {
   classStyles: string;
   btnName: string;
   route?: string;
+  action?: "submit";
 }
 
-const CustomBtn = ({ btnName, classStyles, route }: CustomBtnProps) => {
+const CustomBtn = ({ btnName, classStyles, route, action }: CustomBtnProps) => {
   const router = useRouter();
 
   const handleClick = (route: string) => {
