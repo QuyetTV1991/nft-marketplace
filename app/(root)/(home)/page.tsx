@@ -1,4 +1,5 @@
 import Banner from "@/components/shared/Banner";
+import HotBids from "@/components/shared/HotBids";
 import TopSellers from "@/components/shared/TopSellers";
 import React from "react";
 
@@ -13,6 +14,10 @@ const Home = () => {
         />
 
         <TopSellers />
+
+        <div className="mt-10">
+          <HotBids />
+        </div>
       </div>
     </div>
   );
