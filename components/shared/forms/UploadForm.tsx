@@ -4,6 +4,7 @@
 import Image from "next/image";
 import React, { useCallback, useMemo, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import Input from "../Input";
 
 const UploadForm = () => {
   const [fileUrl, setFileUrl] = useState(null);
@@ -33,14 +34,14 @@ const UploadForm = () => {
 
   return (
     <>
-      <label
-        className="font-poppins text-xl font-semibold text-nft-black-1 dark:text-white"
-        htmlFor="fileUpload"
-      >
-        Upload File
-      </label>
       <div className="mt-4">
-        <div {...getRootProps()} className={`${filestyle} cursor-pointer`}>
+        <label
+          className="font-poppins text-xl font-semibold text-nft-black-1 dark:text-white"
+          htmlFor="fileUpload"
+        >
+          Upload File
+        </label>
+        <div {...getRootProps()} className={`${filestyle} mt-4 cursor-pointer`}>
           <input {...getInputProps()} id="fileUpload" name="fileUpload" />
 
           <div className="flexCenter flex-col text-center">
@@ -78,6 +79,13 @@ const UploadForm = () => {
           </aside>
         )}
       </div>
+
+      <Input
+        inputType="input"
+        title="Name"
+        placeholder="NFT Card"
+        handleClick={() => {}}
+      />
     </>
   );
 };
