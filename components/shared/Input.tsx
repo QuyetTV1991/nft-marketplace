@@ -1,10 +1,12 @@
 import React from "react";
 
 interface InputProps {
-  inputType: string;
+  inputType: "input" | "textarea" | "number";
   title: string;
   placeholder: string;
-  handleClick: (e: HTMLInputElement) => void;
+  handleClick: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 }
 
 const Input = ({ inputType, title, placeholder, handleClick }: InputProps) => {
