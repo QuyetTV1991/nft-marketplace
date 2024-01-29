@@ -22,6 +22,7 @@ const NFTCard = ({ nft }: NFTCardProps) => {
             src={nft.image || "/assets/nft-default.png"}
             alt={nft.name}
             fill
+            sizes="(min-width: 2100px) 300px, (min-width: 1700px) 240px, (max-width: 600px) 114px, (max-width: 400px) 224px, 208px"
             className="object-cover"
           />
         </div>

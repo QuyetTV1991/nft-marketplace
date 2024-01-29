@@ -22,6 +22,7 @@ const CreatorCard = ({ rank, imgUrl, name, eths }: CreatorCardProps) => {
             src={imgUrl}
             alt={name}
             fill
+            sizes="(min-width: 2100px) 112px, 80px"
             className="rounded-full object-cover"
           />
           <div className="absolute -right-0 bottom-2 size-4 minlg:size-7">
@@ -29,6 +30,7 @@ const CreatorCard = ({ rank, imgUrl, name, eths }: CreatorCardProps) => {
               src="/assets/tick.png"
               alt="tick"
               fill
+              sizes="(min-width: 2100px) 16px, 28px"
               className="object-contain"
             />
           </div>
