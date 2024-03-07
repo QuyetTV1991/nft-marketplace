@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { logo02 } from '../assets'
+import { cross, logo02, menu } from '../assets'
 import { Button } from '.'
 
 const MenuItems = ({ isMobile, active, setActive }) => {
@@ -66,6 +66,7 @@ const Navbar = () => {
     const { theme, setTheme } = useTheme()
     const [active, setActive] = useState('Explore NFTs')
     const router = useRouter()
+    const [isOpen, setIsOpen] = useState(false)
 
     return (
         <nav className='flexBetween w-full fixed z-10 p-4 flex-row border-b dark:bg-nft-dark bg-white dark:border-nft-black-1 border-nft-gray-1'>
@@ -73,7 +74,7 @@ const Navbar = () => {
                 <Link href="/" passHref>
                     <div className='flexCenter md:hidden cursor-pointer' onClick={() => { }}>
                         <Image src={logo02} alt='Logo' width={32} height={32} objectFit='contain' />
-                        <p className='dark:text-white text-nft-black-1 text-lg ml-1'>CryptoKet</p>
+                        <p className='dark:text-white text-nft-black-1 text-lg ml-1 font-medium'>CryptoKet</p>
                     </div>
                 </Link>
                 <Link href="/" passHref>
@@ -103,8 +104,38 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div>
-            
+            {/* Toggle Menu Bar */}
+            <div className='hidden md:flex ml-2'>
+                {isOpen ? (
+                    <Image
+                        src={cross}
+                        width={20}
+                        height={20}
+                        alt='close'
+                        onClick={() => setIsOpen(false)}
+                        className={`object-contain ${theme !== 'dark' && 'filter invert'}`}
+                    />
+                ) : (
+                    <Image
+                        src={menu}
+                        width={25}
+                        height={25}
+                        alt='menu'
+                        onClick={() => setIsOpen(true)}
+                        className={`object-contain ${theme !== 'dark' && 'filter invert'}`}
+                    />
+                )}
+
+                {isOpen && (
+                    <div className='fixed inset-0 top-65 dark:bg-nft-dark bg-white z-10 nav-h flex justify-between flex-col'>
+                        <div className='flex-1 p-4'>
+                            <MenuItems active={active} setActive={setActive} isMobile />
+                        </div>
+                        <div className='p-4 border-t dark:border-nft-black-1 border-nft-gray-1'>
+                            <ButtonGroup setActive={setActive} router={router} />
+                        </div>
+                    </div>
+                )}
             </div>
         </nav>
     )
