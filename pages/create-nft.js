@@ -72,7 +72,7 @@ const CreateNFT = () => {
                 </p>
               </div>
             </div>
-
+            {/* if file exsit, mean file uploaded */}
             {fileUrl && (
               <aside>
                 <div>
