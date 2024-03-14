@@ -106,9 +106,8 @@ const Home = () => {
                       src={left}
                       alt="left arrow"
                       layout="fill"
-                      className={`object-contain ${
-                        theme === "light" && "filter invert"
-                      }`}
+                      objectFit="contain"
+                      className={theme === "light" ? "filter invert" : ""}
                     />
                   </div>
                   <div
@@ -119,9 +118,8 @@ const Home = () => {
                       src={right}
                       alt="right arrow"
                       layout="fill"
-                      className={`object-contain ${
-                        theme === "light" && "filter invert"
-                      }`}
+                      objectFit="contain"
+                      className={theme === "light" ? "filter invert" : ""}
                     />
                   </div>
                 </>

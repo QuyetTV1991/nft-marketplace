@@ -87,11 +87,10 @@ const Footer = () => {
                 <Image
                   src={image}
                   alt="social"
+                  objectFit="contain"
                   width={24}
                   height={24}
-                  className={`object-contain ${
-                    theme === "light" ? "filter invert" : ""
-                  }`}
+                  className={theme === "light" ? "filter invert" : ""}
                 />
               </div>
             ))}

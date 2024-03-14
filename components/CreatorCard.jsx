@@ -17,7 +17,7 @@ const CreatorCard = ({ rank, creatorImage, creatorName, creatorEths }) => {
         <div className="relative w-20 h-20 minlg:w-28 minlg:h-28">
           <Image
             src={creatorImage}
-            alt={creatorName}
+            alt="creator"
             layout="fill"
             className="object-cover rounded-full"
           />
