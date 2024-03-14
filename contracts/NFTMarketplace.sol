@@ -54,7 +54,7 @@ contract NFTMarketplace is ERC721URIStorage {
 
     // set the owner as the msg.sender
     // the owner of the contract is the one deploying it
-    constructor() {
+    constructor() ERC721("Metaverse Tokens", "METT") {
         owner = payable(msg.sender);
     }
 
