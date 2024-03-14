@@ -1,0 +1,22 @@
+import React, { useState, useEffect } from "react";
+import Web3Model from "web3modal";
+import { ethers } from "ethers";
+import axios from "axios";
+
+import { MarketAddress, MarketAddressABI } from "./constants";
+
+export const NFTContext = React.createContext();
+
+export const NFTProvider = ({ children }) => {
+  const nftCurrency = "LineaETH";
+
+  return (
+    <NFTContext.Provider
+      value={{
+        nftCurrency,
+      }}
+    >
+      {children}
+    </NFTContext.Provider>
+  );
+};
